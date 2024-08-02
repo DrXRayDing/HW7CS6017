@@ -37,7 +37,7 @@ d3.csv('pet_ownership.csv').then(data => {
             cat: +d.CatOwnershipRate
         };
     });
-
+    
     console.log("Pet Ownership Data:", petOwnershipData);
 
     loadAllStates();
@@ -553,7 +553,7 @@ document.getElementById('catButton').addEventListener('click', function () {
     drawBarChart(catData, "Cat Ownership Rate by State");
 });
 
-// Call the function to draw the dog bar chart by default
+// Call the function to draw the total pet bar chart by default
 d3.csv('pet_ownership.csv').then(data => {
     data.forEach(d => {
         petOwnershipData[d.State.toLowerCase()] = {
@@ -563,11 +563,11 @@ d3.csv('pet_ownership.csv').then(data => {
         };
     });
 
-    const dogData = Object.keys(petOwnershipData).map(state => ({
+    const totalData = Object.keys(petOwnershipData).map(state => ({
         State: state,
-        value: petOwnershipData[state].dog
+        value: petOwnershipData[state].total
     }));
-    drawBarChart(dogData, "Dog Ownership Rate by State");
+    drawBarChart(totalData, "Total Pet Ownership Rate by State");
 });
 
 // ===============================  Cat and Dog Buttons   ========================================== //
@@ -599,7 +599,7 @@ d3.csv('pet_ownership.csv').then(data => {
         };
     });
 
-    const dogData = Object.keys(petOwnershipData).map(state => ({
+    const totalData = Object.keys(petOwnershipData).map(state => ({
         State: state,
         value: petOwnershipData[state].dog
     }));
